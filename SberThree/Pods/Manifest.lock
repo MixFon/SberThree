@@ -1,0 +1,60 @@
+PODS:
+  - BaseTableViewKit (0.1.0):
+    - BaseTableViewKit/BaseTableView (= 0.1.0)
+    - BaseTableViewKit/Cells (= 0.1.0)
+    - BaseTableViewKit/Data (= 0.1.0)
+    - BaseTableViewKit/Extensions (= 0.1.0)
+    - BaseTableViewKit/FooterView (= 0.1.0)
+    - BaseTableViewKit/HeaderView (= 0.1.0)
+    - BaseTableViewKit/Protocols (= 0.1.0)
+    - DifferenceKit
+  - BaseTableViewKit/BaseTableView (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/Cells (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/Data (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/Extensions (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/FooterView (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/HeaderView (0.1.0):
+    - DifferenceKit
+  - BaseTableViewKit/Protocols (0.1.0):
+    - DifferenceKit
+  - DifferenceKit (1.2.0):
+    - DifferenceKit/Core (= 1.2.0)
+    - DifferenceKit/UIKitExtension (= 1.2.0)
+  - DifferenceKit/Core (1.2.0)
+  - DifferenceKit/UIKitExtension (1.2.0):
+    - DifferenceKit/Core
+  - SDWebImage (5.12.3):
+    - SDWebImage/Core (= 5.12.3)
+  - SDWebImage/Core (5.12.3)
+
+DEPENDENCIES:
+  - BaseTableViewKit (from `https://github.com/MosMetro-official/BaseTableViewKit`)
+  - SDWebImage (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - DifferenceKit
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  BaseTableViewKit:
+    :git: https://github.com/MosMetro-official/BaseTableViewKit
+
+CHECKOUT OPTIONS:
+  BaseTableViewKit:
+    :commit: 282bc5dd68cd63ab11387d05d995ebaa42829acb
+    :git: https://github.com/MosMetro-official/BaseTableViewKit
+
+SPEC CHECKSUMS:
+  BaseTableViewKit: 4544dda65fbf4957728cdc9f2ede43597159a5cb
+  DifferenceKit: 5659c430bb7fe45876fa32ce5cba5d6167f0c805
+  SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
+
+PODFILE CHECKSUM: e4b65641f198f761a25c3bee73c434bd8441a64f
+
+COCOAPODS: 1.11.2

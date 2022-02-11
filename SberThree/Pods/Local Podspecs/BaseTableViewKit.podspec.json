@@ -1,0 +1,69 @@
+{
+  "name": "BaseTableViewKit",
+  "version": "0.1.0",
+  "summary": "A short description of BaseTableViewKit.",
+  "swift_versions": [
+    "4.2",
+    "5.4"
+  ],
+  "requires_arc": true,
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/MosMetro-official/BaseTableViewKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "viacheslavplatonov": "slava.p12@yandex.ru"
+  },
+  "source": {
+    "git": "https://github.com/MosMetro-official/BaseTableViewKit",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "BaseTableViewKit/Classes/*.swift",
+  "resource_bundles": {
+    "BaseTableViewKit": [
+      "BaseTableViewKit/**/*.{xib,storyboard,xcassets}"
+    ]
+  },
+  "frameworks": "UIKit",
+  "dependencies": {
+    "DifferenceKit": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "BaseTableView",
+      "source_files": "BaseTableViewKit/Classes/BaseTableView/*"
+    },
+    {
+      "name": "FooterView",
+      "source_files": "BaseTableViewKit/Classes/FooterView/*"
+    },
+    {
+      "name": "Extensions",
+      "source_files": "BaseTableViewKit/Classes/Extensions/*"
+    },
+    {
+      "name": "Cells",
+      "source_files": "BaseTableViewKit/Classes/Cells/*"
+    },
+    {
+      "name": "HeaderView",
+      "source_files": "BaseTableViewKit/Classes/HeaderView/*"
+    },
+    {
+      "name": "Data",
+      "source_files": "BaseTableViewKit/Classes/Data/*"
+    },
+    {
+      "name": "Protocols",
+      "source_files": "BaseTableViewKit/Classes/Protocols/*"
+    }
+  ],
+  "swift_version": "5.4"
+}

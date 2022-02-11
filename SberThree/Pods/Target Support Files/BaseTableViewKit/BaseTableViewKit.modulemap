@@ -1,0 +1,6 @@
+framework module BaseTableViewKit {
+  umbrella header "BaseTableViewKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
