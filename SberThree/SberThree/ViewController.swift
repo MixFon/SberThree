@@ -7,6 +7,7 @@
 
 import UIKit
 import BaseTableViewKit
+import DifferenceKit
 
 class ViewController: UIViewController {
     
@@ -19,12 +20,17 @@ class ViewController: UIViewController {
         view = newsView
         view.backgroundColor = .white
         newsView.props = .error(description: "Попробовать снова", onReload: reloadNews)
+        //newsView.props = .loaded(states: [])
         loager.delegate = self
         //navigationController?.addChild(self)
     }
     
     func reloadNews() {
         loager.loadDataNews()
+    }
+    
+    func printTitle(text: String) {
+        print(text)
     }
 }
 
@@ -33,7 +39,7 @@ extension ViewController: LoaderProtocol {
     func update(news: News) {
         let header = NewsTable.ViewState.Header(
             title: "Московское метро",
-            style: .small,
+            style: .medium,
             backgroundColor: .clear,
             isInsetGrouped: false)
         
@@ -42,9 +48,9 @@ extension ViewController: LoaderProtocol {
             let row = NewsTable.ViewState.Row (
                 title: data.text,
                 leftImage: UIImage(systemName: "banknote"),
-                separator: true,
-                onSelect: { print(21) },
-                backgroundColor: nil)
+                separator: false,
+                onSelect: { self.printTitle(text: data.text) },
+                backgroundColor: .white)
             let footer = NewsTable.ViewState.Footer(
                 text: "footer",
                 attributedText: nil,
@@ -55,9 +61,6 @@ extension ViewController: LoaderProtocol {
             let element = Element(content: row)
             blocks.append(State(model: section, elements: [element]))
         }
-        //let rows = news.data.map({  } )
-        //let elements = rows.map( { Element(content: $0) } )
-        
         newsView.props = .loaded(states: blocks)
     }
     

@@ -17,6 +17,7 @@ class NewsView: UIView {
     var reloadButton: UIButton!
     
     var props: Props = .error(description: "Error", onReload: { print("press error") } ) {
+    //var props: Props = .loaded(states: []) {
         didSet {
             //self.setNeedsLayout()
             update()
@@ -49,6 +50,8 @@ class NewsView: UIView {
             reloadButton.isHidden = true
             errorLabel.isHidden = true
             tableView.table.viewStateInput = states
+            //tableView.table.showError(title: "Error", desc: "дис", onRetry: { print(23) })
+            //tableView.table.showLoading()
             //tableView.reloadData()
         }
     }

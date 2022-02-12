@@ -21,16 +21,6 @@ struct Loader {
         return "https://devapp.mosmetro.ru/api/tweets/v1.0/"
     }
     
-//    /// Загрузка следующей страницы
-//    mutating func loadNextPage() {
-//        getDataNews(url: self.urlString)
-//    }
-//
-//    /// Загрузка страницы тексту запроса
-//    mutating func loadSearchText(text: String) {
-//        getDataNews(url: self.urlString)
-//    }
-    
     /// По заданному url в скачиваем json. Затем в глачном потоке обновляем таблицу.
     func loadDataNews() {
         guard let url = URL(string: self.urlString) else { return }
