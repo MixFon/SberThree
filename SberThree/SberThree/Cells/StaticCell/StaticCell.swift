@@ -25,15 +25,14 @@ extension _StaticCell {
 
 class StaticCell : UITableViewCell {
     
-    @IBOutlet weak private var title : UILabel!
+    @IBOutlet weak private var title: UILabel!
     @IBOutlet weak private var descr : UILabel!
-    
-    @IBOutlet weak var rightImage: UIImageView!
+    @IBOutlet weak private var rightImage: UIImageView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        isUserInteractionEnabled = true
+        isUserInteractionEnabled = false
         self.rightImage.layer.cornerRadius = self.rightImage.frame.size.width / 2
         self.rightImage.clipsToBounds = true
     }
@@ -41,24 +40,15 @@ class StaticCell : UITableViewCell {
     override func prepareForReuse() {
         self.title.text = nil
         self.title.textColor = nil
+        
+        self.descr.text = nil
+        self.descr.textColor = nil
     }
     
     func configure(with data: _StaticCell, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
         self.title.text = data.title
-        self.title.textColor = textColor
         
-        //self.descr.text = data.title
-        //self.descr.textColor = textColor
-        if boldText {
-            self.title.font = UIFont.systemFont(ofSize: 20)
-        }
-        if let accesory = data.accesoryType {
-            self.accessoryType = accesory
-        }
-        
-        if let bgColor = data.backgroundColor  {
-            self.backgroundColor = bgColor
-        }
+        self.descr.text = data.descr
     }
 }
 

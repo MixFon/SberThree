@@ -24,17 +24,17 @@ class ViewController: UIViewController {
         loager.delegate = self
         let errorState = makeErrorState(
             title: "Ошибка",
-            desct: "Описание",
+            desct: "Не удалось загрузить данные :(",
             onRetry: reloadNews,
             backgroundColor: .clear)
         //let loadingState = makeLoadingState(loadingTitle: "Загрузка...")
         //newsTable.table.viewStateInput = [loadingState]
-        //newsTable.table.viewStateInput = [errorState]
+        newsTable.table.viewStateInput = [errorState]
         //newsTable.table.showLoading()
         //_ = BaseTableView.showLoading(newsTable.table)
         
-        let staticCell = makeStaricCell(title: "Mos Mtro", descr: "Diak")
-        newsTable.table.viewStateInput = [staticCell]
+        //let staticCell = makeStaricCell(title: "Московское метро", descr: "Официальный твиттер-аккаунт Московского метрополитена по оперативному информированию работы метро.")
+        //newsTable.table.viewStateInput = [staticCell]
     }
     
     private func makeErrorState(title: String, desct: String, onRetry: @escaping ()->(), backgroundColor: UIColor) -> State {
@@ -63,6 +63,12 @@ class ViewController: UIViewController {
         let elem = Element(content: loading)
         let block = State(model: section, elements: [elem])
         return block
+    }
+    
+    private func makeTopCell() -> State {
+        let title = "Московское метро"
+        let descr = "Официальный твиттер-аккаунт Московского метрополитена по оперативному информированию работы метро."
+        return makeStaricCell(title: title, descr: descr)
     }
     
     func reloadNews() {
@@ -106,7 +112,7 @@ extension ViewController: LoaderProtocol {
             backgroundColor: .clear,
             isInsetGrouped: false)
         
-        var blocks: [State] = []
+        var blocks: [State] = [makeTopCell()]
         for data in news.data {
             let row = NewsTable.ViewState.Row (
                 title: data.text,
