@@ -11,26 +11,89 @@ import DifferenceKit
 
 class ViewController: UIViewController {
     
-    var newsView = NewsView(frame: UIScreen.main.bounds)
+    //var newsView = NewsView(frame: UIScreen.main.bounds)
+    var newsTable = NewsTable(frame: UIScreen.main.bounds)
     
     var loager = Loader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = newsView
+        view = newsTable
         view.backgroundColor = .white
-        newsView.props = .error(description: "Попробовать снова", onReload: reloadNews)
-        //newsView.props = .loaded(states: [])
+        newsTable.table.viewStateInput = []
         loager.delegate = self
-        //navigationController?.addChild(self)
+        let errorState = makeErrorState(
+            title: "Ошибка",
+            desct: "Описание",
+            onRetry: reloadNews,
+            backgroundColor: .clear)
+        //let loadingState = makeLoadingState(loadingTitle: "Загрузка...")
+        //newsTable.table.viewStateInput = [loadingState]
+        //newsTable.table.viewStateInput = [errorState]
+        //newsTable.table.showLoading()
+        //_ = BaseTableView.showLoading(newsTable.table)
+        
+        let staticCell = makeStaricCell(title: "Mos Mtro", descr: "Diak")
+        newsTable.table.viewStateInput = [staticCell]
+    }
+    
+    private func makeErrorState(title: String, desct: String, onRetry: @escaping ()->(), backgroundColor: UIColor) -> State {
+        let error = NewsTable.ViewState.ErrorCell(
+            title: title,
+            descr: desct,
+            onRetry: onRetry,
+            backgroundColor: backgroundColor)
+        let section = SectionState(header: nil, footer: nil)
+        let elem = Element(content: error)
+        let block = State(model: section, elements: [elem])
+        return block
+    }
+    
+    private func makeLoadingState(loadingTitle: String) -> State {
+        let loading = NewsTable.ViewState.LoadingCell(loadingTitle: loadingTitle)
+        let section = SectionState(header: nil, footer: nil)
+        let elem = Element(content: loading)
+        let block = State(model: section, elements: [elem])
+        return block
+    }
+    
+    private func makeStaricCell(title: String, descr: String) -> State {
+        let loading = NewsTable.ViewState.StaticCell(title: title, descr: descr)
+        let section = SectionState(header: nil, footer: nil)
+        let elem = Element(content: loading)
+        let block = State(model: section, elements: [elem])
+        return block
     }
     
     func reloadNews() {
+        let loadingState = makeLoadingState(loadingTitle: "Загрузка")
+        newsTable.table.viewStateInput = [loadingState]
         loager.loadDataNews()
     }
     
     func printTitle(text: String) {
         print(text)
+    }
+    
+    func makeAtributString(favorite: Int?, retweet: Int?) -> NSAttributedString {
+        let fullStaring = NSMutableAttributedString(string: "")
+        
+        let imageAttachmentHeart = NSTextAttachment()
+        imageAttachmentHeart.image = UIImage(systemName: "heart")
+        
+        let imageAttachmentMessage = NSTextAttachment()
+        imageAttachmentMessage.image = UIImage(systemName: "message")
+        
+        
+        let imageStringHeart = NSAttributedString(attachment: imageAttachmentHeart)
+        let imageStringMessage = NSAttributedString(attachment: imageAttachmentMessage)
+        
+        fullStaring.append(imageStringHeart)
+        fullStaring.append(NSAttributedString(string: "  \(favorite ?? 0)    "))
+        
+        fullStaring.append(imageStringMessage)
+        fullStaring.append(NSAttributedString(string: "  \(retweet ?? 0)    "))
+        return fullStaring
     }
 }
 
@@ -47,25 +110,28 @@ extension ViewController: LoaderProtocol {
         for data in news.data {
             let row = NewsTable.ViewState.Row (
                 title: data.text,
-                leftImage: UIImage(systemName: "banknote"),
-                separator: false,
+                leftImage: nil,
+                separator: true,
                 onSelect: { self.printTitle(text: data.text) },
-                backgroundColor: .white)
+                backgroundColor: nil)
+            let atributString = makeAtributString(favorite: data.favoriteCount, retweet: data.retweetCount)
             let footer = NewsTable.ViewState.Footer(
-                text: "footer",
-                attributedText: nil,
-                isInsetGrouped: false)
+                text: "",
+                attributedText: atributString,
+                isInsetGrouped: true)
             
             let section = SectionState(header: header, footer: footer)
             
             let element = Element(content: row)
             blocks.append(State(model: section, elements: [element]))
         }
-        newsView.props = .loaded(states: blocks)
+        newsTable.table.viewStateInput = blocks
+        //newsView.props = .loaded(states: blocks)
     }
     
     func showError(title: String, message: String) {
-        self.newsView.props = .error(description: "Ошибка", onReload: self.loager.loadDataNews )
+        newsTable.table.viewStateInput = []
+        //self.newsView.props = .error(description: "Ошибка", onReload: self.loager.loadDataNews )
     }
     
     

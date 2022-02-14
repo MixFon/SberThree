@@ -32,6 +32,22 @@ class NewsTable: UIView {
             var attributedText: NSAttributedString?
             var isInsetGrouped: Bool
         }
+
+        struct ErrorCell: _ErrorData {
+            var title: String
+            var descr: String
+            var onRetry: (() -> ())?
+            var backgroundColor: UIColor
+        }
+        
+        struct LoadingCell: _Loading {
+            var loadingTitle: String?
+        }
+        
+        struct StaticCell: _StaticCell {
+            var title: String
+            var descr: String
+        }
     }
     
     var table: BaseTableView!
@@ -51,6 +67,10 @@ class NewsTable: UIView {
         table.sectionHeaderHeight = 44
         table.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(table)
+        
+        table.register(UINib(nibName: ErrorCell.identifire, bundle: nil), forCellReuseIdentifier: ErrorCell.identifire)
+        table.register(UINib(nibName: LoadintCell.identifire, bundle: nil), forCellReuseIdentifier: LoadintCell.identifire)
+        table.register(UINib(nibName: StaticCell.identifire, bundle: nil), forCellReuseIdentifier: StaticCell.identifire)
 
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: topAnchor),
