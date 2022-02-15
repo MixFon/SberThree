@@ -44,7 +44,7 @@ class StandartCell: UITableViewCell {
         self.leftImage.layer.cornerRadius = self.leftImage.frame.size.width / 2
         self.leftImage.clipsToBounds = true
         
-        self.bottomImage.layer.cornerRadius = 5
+        self.bottomImage.layer.cornerRadius = 10
     }
     
     func configure(with data: _StandartCell, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {

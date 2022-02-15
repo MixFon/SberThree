@@ -30,10 +30,23 @@ struct Loader {
         session.dataTask(with: request) { (data, response, error) in
             if error != nil {
                 DispatchQueue.main.async {
-                    self.delegate?.showError(title: "Ошибка", message: "Не удалось загрузить данные :(")
+                    self.delegate?.showError(
+                        title: "Ошибка",
+                        message: error?.localizedDescription ?? "Не удалось загрузить данные :(")
                 }
             }
-            //guard let response = response as? HTTPURLResponse else { return }
+            if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200..<300:
+                    break
+                default:
+                    DispatchQueue.main.async {
+                        self.delegate?.showError(
+                            title: "Ошибка",
+                            message: "Статус: \(response.statusCode)")
+                    }
+                }
+            }
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()

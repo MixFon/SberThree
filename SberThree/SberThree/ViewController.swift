@@ -12,8 +12,6 @@ import SafariServices
 import SDWebImage
 
 class ViewController: UIViewController {
-    
-    //var newsView = NewsView(frame: UIScreen.main.bounds)
     var newsTable = NewsTable(frame: UIScreen.main.bounds)
     
     var loager = Loader()
@@ -29,10 +27,11 @@ class ViewController: UIViewController {
             desct: "Не удалось загрузить данные :(",
             onRetry: reloadNews,
             backgroundColor: .clear)
+        newsTable.table.separatorStyle = .none
         newsTable.table.viewStateInput = [errorState]
-        //newsTable.table.showLoading()
     }
     
+    /// Создание состояния ошибки
     private func makeErrorState(title: String, desct: String, onRetry: @escaping ()->(), backgroundColor: UIColor) -> State {
         let error = NewsTable.ViewState.ErrorCell(
             title: title,
@@ -45,6 +44,7 @@ class ViewController: UIViewController {
         return block
     }
     
+    /// Создание состояния загрузки
     private func makeLoadingState(loadingTitle: String) -> State {
         let loading = NewsTable.ViewState.LoadingCell(loadingTitle: loadingTitle)
         let section = SectionState(header: nil, footer: nil)
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         return block
     }
     
+    /// Создание статической ячейки
     private func makeStaricCell(title: String, descr: String) -> State {
         let loading = NewsTable.ViewState.StaticCell(title: title, descr: descr)
         let section = SectionState(header: nil, footer: nil)
@@ -67,12 +68,14 @@ class ViewController: UIViewController {
         return makeStaricCell(title: title, descr: descr)
     }
     
+    /// Ставит состояние загрузки и загружает данные из сети
     func reloadNews() {
         let loadingState = makeLoadingState(loadingTitle: "Загрузка")
         newsTable.table.viewStateInput = [loadingState]
         loager.loadDataNews()
     }
     
+    ///  Открывает страничку metrooperativno с указанным id
     private func showTwitterPage(id: UInt64) {
         if let url = URL(string: "https://mobile.twitter.com/metrooperativno/status/\(id)") {
             let config = SFSafariViewController.Configuration()
@@ -105,29 +108,27 @@ extension ViewController: LoaderProtocol {
             title: "Московское метро",
             descr: dataNews.text,
             leftImage: nil,
-            url: dataNews.mediaEntities.first,
+            //url: dataNews.mediaEntities.first,
+            url: "https://static2.bigstockphoto.com/0/3/4/large1500/430934111.jpg",
             createdAt: makeDate(createAt: dataNews.createdAt ?? 0),
             retweetCount: dataNews.retweetCount ?? 0,
             favoriteCount: dataNews.favoriteCount ?? 0,
             commentsCount: dataNews.commentsCount ?? 0,
-            //url: "https://static2.bigstockphoto.com/0/3/4/large1500/430934111.jpg",
             separator: true,
             onSelect: { self.showTwitterPage(id: dataNews.id) },
             backgroundColor: nil)
         })
         let elements = rows.map( { Element(content: $0) } )
-        //news.data.map( {Element(content: NewsTable.)} )
         let section = SectionState(header: nil, footer: nil)
         let block = State(model: section, elements: elements)
         blocks.append(block)
         newsTable.table.viewStateInput = blocks
-        //newsView.props = .loaded(states: blocks)
     }
     
+    /// Вызов состояния ошибки
     func showError(title: String, message: String) {
         let error = makeErrorState(title: title, desct: message, onRetry: reloadNews, backgroundColor: .clear)
         newsTable.table.viewStateInput = [error]
-        //self.newsView.props = .error(description: "Ошибка", onReload: self.loager.loadDataNews )
     }
     
     

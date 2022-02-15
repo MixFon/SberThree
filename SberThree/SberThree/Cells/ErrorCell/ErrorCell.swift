@@ -55,10 +55,7 @@ class ErrorCell: UITableViewCell {
         if let bgColor = data.backgroundColor  {
             self.backgroundColor = bgColor
         }
-        
     }
-    
-    
 }
 
 

@@ -70,14 +70,8 @@ class NewsTable: UIView {
     
     private func setupTableView() {
         table = BaseTableView(frame: .zero, style: .insetGrouped)
-        //table.sectionHeaderHeight = 10
         table.translatesAutoresizingMaskIntoConstraints = false
-//        table.separatorColor = .none
-//        table.separatorInset = .zero
-//        table.separatorEffect = .none
-            
         self.addSubview(table)
-     
         table.register(UINib(nibName: ErrorCell.identifire, bundle: nil), forCellReuseIdentifier: ErrorCell.identifire)
         table.register(UINib(nibName: LoadintCell.identifire, bundle: nil), forCellReuseIdentifier: LoadintCell.identifire)
         table.register(UINib(nibName: StaticCell.identifire, bundle: nil), forCellReuseIdentifier: StaticCell.identifire)
