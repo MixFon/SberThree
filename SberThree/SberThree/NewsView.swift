@@ -50,9 +50,6 @@ class NewsView: UIView {
             reloadButton.isHidden = true
             errorLabel.isHidden = true
             tableView.table.viewStateInput = states
-            //tableView.table.showError(title: "Error", desc: "дис", onRetry: { print(23) })
-            //tableView.table.showLoading()
-            //tableView.reloadData()
         }
     }
     

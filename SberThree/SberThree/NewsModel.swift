@@ -14,8 +14,8 @@ struct News: Codable {
 
 // MARK: - Datum
 struct Datum: Codable {
-    let id: Double
+    let id: UInt64
     let text: String
-    let createdAt, retweetCount, favoriteCount: Int
-    //let mediaEntities: [JSONAny]
+    let createdAt, retweetCount, favoriteCount, commentsCount: Int?
+    let mediaEntities: [String]
 }

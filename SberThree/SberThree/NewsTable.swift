@@ -12,9 +12,15 @@ class NewsTable: UIView {
     
     struct ViewState {
         
-        struct Row: _StandartImage {
+        struct Row: _StandartCell {
             var title      : String
+            var descr: String
             var leftImage  : UIImage?
+            var url: String?
+            var createdAt: String
+            var retweetCount: Int
+            var favoriteCount: Int
+            var commentsCount: Int
             var separator  : Bool
             let onSelect   : () -> ()
             var backgroundColor: UIColor?
@@ -63,14 +69,19 @@ class NewsTable: UIView {
     }
     
     private func setupTableView() {
-        table = BaseTableView(frame: .infinite, style: .insetGrouped)
-        table.sectionHeaderHeight = 44
+        table = BaseTableView(frame: .zero, style: .insetGrouped)
+        //table.sectionHeaderHeight = 10
         table.translatesAutoresizingMaskIntoConstraints = false
+//        table.separatorColor = .none
+//        table.separatorInset = .zero
+//        table.separatorEffect = .none
+            
         self.addSubview(table)
-        
+     
         table.register(UINib(nibName: ErrorCell.identifire, bundle: nil), forCellReuseIdentifier: ErrorCell.identifire)
         table.register(UINib(nibName: LoadintCell.identifire, bundle: nil), forCellReuseIdentifier: LoadintCell.identifire)
         table.register(UINib(nibName: StaticCell.identifire, bundle: nil), forCellReuseIdentifier: StaticCell.identifire)
+        table.register(UINib(nibName: StandartCell.identifire, bundle: nil), forCellReuseIdentifier: StandartCell.identifire)
 
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: topAnchor),

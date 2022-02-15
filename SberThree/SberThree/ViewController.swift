@@ -8,6 +8,8 @@
 import UIKit
 import BaseTableViewKit
 import DifferenceKit
+import SafariServices
+import SDWebImage
 
 class ViewController: UIViewController {
     
@@ -27,14 +29,8 @@ class ViewController: UIViewController {
             desct: "Не удалось загрузить данные :(",
             onRetry: reloadNews,
             backgroundColor: .clear)
-        //let loadingState = makeLoadingState(loadingTitle: "Загрузка...")
-        //newsTable.table.viewStateInput = [loadingState]
         newsTable.table.viewStateInput = [errorState]
         //newsTable.table.showLoading()
-        //_ = BaseTableView.showLoading(newsTable.table)
-        
-        //let staticCell = makeStaricCell(title: "Московское метро", descr: "Официальный твиттер-аккаунт Московского метрополитена по оперативному информированию работы метро.")
-        //newsTable.table.viewStateInput = [staticCell]
     }
     
     private func makeErrorState(title: String, desct: String, onRetry: @escaping ()->(), backgroundColor: UIColor) -> State {
@@ -77,66 +73,60 @@ class ViewController: UIViewController {
         loager.loadDataNews()
     }
     
-    func printTitle(text: String) {
-        print(text)
+    private func showTwitterPage(id: UInt64) {
+        if let url = URL(string: "https://mobile.twitter.com/metrooperativno/status/\(id)") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        } else {
+            let errorState = makeErrorState(
+                title: "Ошибка",
+                desct: "Не удалось загрузить данные :(",
+                onRetry: reloadNews,
+                backgroundColor: .clear)
+            newsTable.table.viewStateInput = [errorState]
+        }
     }
     
-    func makeAtributString(favorite: Int?, retweet: Int?) -> NSAttributedString {
-        let fullStaring = NSMutableAttributedString(string: "")
-        
-        let imageAttachmentHeart = NSTextAttachment()
-        imageAttachmentHeart.image = UIImage(systemName: "heart")
-        
-        let imageAttachmentMessage = NSTextAttachment()
-        imageAttachmentMessage.image = UIImage(systemName: "message")
-        
-        
-        let imageStringHeart = NSAttributedString(attachment: imageAttachmentHeart)
-        let imageStringMessage = NSAttributedString(attachment: imageAttachmentMessage)
-        
-        fullStaring.append(imageStringHeart)
-        fullStaring.append(NSAttributedString(string: "  \(favorite ?? 0)    "))
-        
-        fullStaring.append(imageStringMessage)
-        fullStaring.append(NSAttributedString(string: "  \(retweet ?? 0)    "))
-        return fullStaring
+    private func makeDate(createAt: Int) -> String {
+        let dataFormatter = DateFormatter()
+        dataFormatter.dateFormat = "dd MMMM yyyy г."
+        return dataFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(createAt / 1000)))
     }
 }
 
 extension ViewController: LoaderProtocol {
     
     func update(news: News) {
-        let header = NewsTable.ViewState.Header(
-            title: "Московское метро",
-            style: .medium,
-            backgroundColor: .clear,
-            isInsetGrouped: false)
-        
         var blocks: [State] = [makeTopCell()]
-        for data in news.data {
-            let row = NewsTable.ViewState.Row (
-                title: data.text,
-                leftImage: nil,
-                separator: true,
-                onSelect: { self.printTitle(text: data.text) },
-                backgroundColor: nil)
-            let atributString = makeAtributString(favorite: data.favoriteCount, retweet: data.retweetCount)
-            let footer = NewsTable.ViewState.Footer(
-                text: "",
-                attributedText: atributString,
-                isInsetGrouped: true)
-            
-            let section = SectionState(header: header, footer: footer)
-            
-            let element = Element(content: row)
-            blocks.append(State(model: section, elements: [element]))
-        }
+        let rows = news.data.map( { dataNews in
+            NewsTable.ViewState.Row (
+            title: "Московское метро",
+            descr: dataNews.text,
+            leftImage: nil,
+            url: dataNews.mediaEntities.first,
+            createdAt: makeDate(createAt: dataNews.createdAt ?? 0),
+            retweetCount: dataNews.retweetCount ?? 0,
+            favoriteCount: dataNews.favoriteCount ?? 0,
+            commentsCount: dataNews.commentsCount ?? 0,
+            //url: "https://static2.bigstockphoto.com/0/3/4/large1500/430934111.jpg",
+            separator: true,
+            onSelect: { self.showTwitterPage(id: dataNews.id) },
+            backgroundColor: nil)
+        })
+        let elements = rows.map( { Element(content: $0) } )
+        //news.data.map( {Element(content: NewsTable.)} )
+        let section = SectionState(header: nil, footer: nil)
+        let block = State(model: section, elements: elements)
+        blocks.append(block)
         newsTable.table.viewStateInput = blocks
         //newsView.props = .loaded(states: blocks)
     }
     
     func showError(title: String, message: String) {
-        newsTable.table.viewStateInput = []
+        let error = makeErrorState(title: title, desct: message, onRetry: reloadNews, backgroundColor: .clear)
+        newsTable.table.viewStateInput = [error]
         //self.newsView.props = .error(description: "Ошибка", onReload: self.loager.loadDataNews )
     }
     

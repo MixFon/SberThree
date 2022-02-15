@@ -47,7 +47,6 @@ class StaticCell : UITableViewCell {
     
     func configure(with data: _StaticCell, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
         self.title.text = data.title
-        
         self.descr.text = data.descr
     }
 }
