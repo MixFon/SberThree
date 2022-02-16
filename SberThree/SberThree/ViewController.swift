@@ -116,7 +116,7 @@ extension ViewController: LoaderProtocol {
             retweetCount: dataNews.retweetCount ?? 0,
             favoriteCount: dataNews.favoriteCount ?? 0,
             commentsCount: dataNews.commentsCount ?? 0,
-            separator: true,
+            separator: false,
             onSelect: { self.showTwitterPage(id: dataNews.id) },
             backgroundColor: nil)
         })

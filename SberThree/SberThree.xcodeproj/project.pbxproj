@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		29236CB027B66ACC00EF91CF /* NewsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236CAF27B66ACC00EF91CF /* NewsTable.swift */; };
-		29236CB427B6A05200EF91CF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236CB327B6A05200EF91CF /* NewsView.swift */; };
 		29236CB627B6DA3E00EF91CF /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236CB527B6DA3E00EF91CF /* Loader.swift */; };
 		29236CB827B6DD4100EF91CF /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236CB727B6DD4100EF91CF /* NewsModel.swift */; };
 		2932FD9E27BA36DC009A7324 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932FD9C27BA36DC009A7324 /* ErrorCell.swift */; };
@@ -31,7 +30,6 @@
 /* Begin PBXFileReference section */
 		0C8D90D776BE7D6F6FC64104 /* Pods_SberThree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SberThree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29236CAF27B66ACC00EF91CF /* NewsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTable.swift; sourceTree = "<group>"; };
-		29236CB327B6A05200EF91CF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		29236CB527B6DA3E00EF91CF /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		29236CB727B6DD4100EF91CF /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		2932FD9C27BA36DC009A7324 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				293DC53727B6521E0009E4D6 /* Assets.xcassets */,
 				293DC53927B6521E0009E4D6 /* LaunchScreen.storyboard */,
 				293DC53C27B6521E0009E4D6 /* Info.plist */,
-				29236CB327B6A05200EF91CF /* NewsView.swift */,
 			);
 			path = SberThree;
 			sourceTree = "<group>";
@@ -295,7 +292,6 @@
 				29236CB627B6DA3E00EF91CF /* Loader.swift in Sources */,
 				2932FD9E27BA36DC009A7324 /* ErrorCell.swift in Sources */,
 				293DC53127B6521E0009E4D6 /* SceneDelegate.swift in Sources */,
-				29236CB427B6A05200EF91CF /* NewsView.swift in Sources */,
 				29236CB027B66ACC00EF91CF /* NewsTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
