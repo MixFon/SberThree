@@ -9,7 +9,6 @@ import UIKit
 import BaseTableViewKit
 import DifferenceKit
 import SafariServices
-import SDWebImage
 
 class ViewController: UIViewController {
     var newsTable = NewsTable(frame: UIScreen.main.bounds)
