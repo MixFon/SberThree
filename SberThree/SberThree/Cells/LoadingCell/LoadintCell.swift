@@ -8,7 +8,11 @@
 import UIKit
 import BaseTableViewKit
 
-extension _Loading  {
+protocol _LoadintCell: CellData {
+    var loadingTitle: String? { get set }
+}
+
+extension _LoadintCell  {
     var backgroundColor: UIColor? { return .clear }
     
     func cell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -31,11 +35,9 @@ class LoadintCell: UITableViewCell {
         self.loadingTitle = nil
     }
     
-    func configure(with data: _Loading, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
+    func configure(with data: _LoadintCell) {
         self.loadingTitle.text = data.loadingTitle
-        if boldText {
-            self.loadingTitle.font = UIFont.systemFont(ofSize: 20)
-        }
+        
         if let accesory = data.accesoryType {
             self.accessoryType = accesory
         }

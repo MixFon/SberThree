@@ -146,14 +146,14 @@
 				293DC52E27B6521E0009E4D6 /* AppDelegate.swift */,
 				293DC53027B6521E0009E4D6 /* SceneDelegate.swift */,
 				293DC53227B6521E0009E4D6 /* ViewController.swift */,
-				293DC53427B6521E0009E4D6 /* Main.storyboard */,
 				29236CAF27B66ACC00EF91CF /* NewsTable.swift */,
-				29236CB327B6A05200EF91CF /* NewsView.swift */,
+				29236CB727B6DD4100EF91CF /* NewsModel.swift */,
+				29236CB527B6DA3E00EF91CF /* Loader.swift */,
+				293DC53427B6521E0009E4D6 /* Main.storyboard */,
 				293DC53727B6521E0009E4D6 /* Assets.xcassets */,
 				293DC53927B6521E0009E4D6 /* LaunchScreen.storyboard */,
 				293DC53C27B6521E0009E4D6 /* Info.plist */,
-				29236CB527B6DA3E00EF91CF /* Loader.swift */,
-				29236CB727B6DD4100EF91CF /* NewsModel.swift */,
+				29236CB327B6A05200EF91CF /* NewsView.swift */,
 			);
 			path = SberThree;
 			sourceTree = "<group>";

@@ -24,11 +24,12 @@ extension _StaticCell {
 }
 
 class StaticCell : UITableViewCell {
+    @IBOutlet weak var mainBackground: UIView!
+    @IBOutlet weak var shadowLayer: UIView!
     
     @IBOutlet weak private var title: UILabel!
     @IBOutlet weak private var descr : UILabel!
     @IBOutlet weak private var rightImage: UIImageView!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,13 +40,10 @@ class StaticCell : UITableViewCell {
     
     override func prepareForReuse() {
         self.title.text = nil
-        self.title.textColor = nil
-        
         self.descr.text = nil
-        self.descr.textColor = nil
     }
     
-    func configure(with data: _StaticCell, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
+    func configure(with data: _StaticCell) {
         self.title.text = data.title
         self.descr.text = data.descr
     }

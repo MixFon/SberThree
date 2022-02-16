@@ -8,7 +8,13 @@
 import UIKit
 import BaseTableViewKit
 
-extension _ErrorData {
+protocol _ErrorCell: CellData {
+    var title   : String   { get }
+    var descr   : String   { get }
+    var onRetry : (()->())? { get }
+}
+
+extension _ErrorCell {
     
     var backgroundColor: UIColor? { return .clear }
     
@@ -41,17 +47,13 @@ class ErrorCell: UITableViewCell {
         self.onRetry = nil
     }
     
-    func configure(with data: _ErrorData, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
+    func configure(with data: _ErrorCell) {
         self.title.text = data.title
         self.descr.text = data.descr
         self.onRetry = data.onRetry
-        if boldText {
-            self.title.font = UIFont.systemFont(ofSize: 20)
-        }
         if let accesory = data.accesoryType {
             self.accessoryType = accesory
         }
-        
         if let bgColor = data.backgroundColor  {
             self.backgroundColor = bgColor
         }

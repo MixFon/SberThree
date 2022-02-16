@@ -31,8 +31,10 @@
                     <constraint firstAttribute="trailingMargin" secondItem="Dcl-2N-V5y" secondAttribute="trailing" constant="1" id="4Ut-Mg-6jb"/>
                     <constraint firstItem="Dcl-2N-V5y" firstAttribute="top" secondItem="R1g-KW-Tbh" secondAttribute="bottom" constant="64" id="7Lh-j9-dZL"/>
                     <constraint firstItem="R1g-KW-Tbh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="Cyx-fH-DsN"/>
+                    <constraint firstItem="Dcl-2N-V5y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="V1p-7e-TUO"/>
                     <constraint firstItem="R1g-KW-Tbh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="WUN-xm-euV"/>
                     <constraint firstAttribute="trailing" secondItem="R1g-KW-Tbh" secondAttribute="trailing" constant="20" symbolic="YES" id="gFo-uf-cvL"/>
+                    <constraint firstItem="R1g-KW-Tbh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wuh-BD-2bb"/>
                     <constraint firstItem="Dcl-2N-V5y" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="yEO-Fm-mow"/>
                 </constraints>
             </tableViewCellContentView>

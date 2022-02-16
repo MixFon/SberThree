@@ -47,7 +47,7 @@ class StandartCell: UITableViewCell {
         self.bottomImage.layer.cornerRadius = 10
     }
     
-    func configure(with data: _StandartCell, imageColor: UIColor = .black, boldText: Bool = false, textColor: UIColor = .black) {
+    func configure(with data: _StandartCell) {
         self.title.text = data.title
         self.descr.text = data.descr
         self.commentsCount.text = String(data.commentsCount)
@@ -56,6 +56,7 @@ class StandartCell: UITableViewCell {
         self.createAt.text = data.createdAt
         self.backgroundColor = .clear
         if let url = data.url {
+            // Не заню, на соколько хорошей идее было загружать изображение тут.
             self.bottomImage.sd_setImage(with: URL(string: url), completed: { image,_,_,_ in
                 if image == nil { self.bottomImage.isHidden = true }
             })

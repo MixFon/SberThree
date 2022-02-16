@@ -25,28 +25,15 @@ class NewsTable: UIView {
             let onSelect   : () -> ()
             var backgroundColor: UIColor?
         }
-        
-        struct Header: _TitleHeaderView {
-            var title: String
-            var style: HeaderTitleStyle
-            var backgroundColor: UIColor
-            var isInsetGrouped: Bool
-        }
-        
-        struct Footer: _BaseFooterView {
-            var text: String
-            var attributedText: NSAttributedString?
-            var isInsetGrouped: Bool
-        }
 
-        struct ErrorCell: _ErrorData {
+        struct ErrorCell: _ErrorCell {
             var title: String
             var descr: String
             var onRetry: (() -> ())?
             var backgroundColor: UIColor
         }
         
-        struct LoadingCell: _Loading {
+        struct LoadingCell: _LoadintCell {
             var loadingTitle: String?
         }
         
@@ -72,6 +59,7 @@ class NewsTable: UIView {
         table = BaseTableView(frame: .zero, style: .insetGrouped)
         table.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(table)
+        
         table.register(UINib(nibName: ErrorCell.identifire, bundle: nil), forCellReuseIdentifier: ErrorCell.identifire)
         table.register(UINib(nibName: LoadintCell.identifire, bundle: nil), forCellReuseIdentifier: LoadintCell.identifire)
         table.register(UINib(nibName: StaticCell.identifire, bundle: nil), forCellReuseIdentifier: StaticCell.identifire)

@@ -18,54 +18,54 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MosMetroIcon" translatesAutoresizingMaskIntoConstraints="NO" id="R3c-tU-3Gg">
-                        <rect key="frame" x="20" y="20" width="45" height="45"/>
+                        <rect key="frame" x="20" y="20" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="45" id="VL6-JN-HWx"/>
-                            <constraint firstAttribute="height" constant="45" id="jWl-u2-39z"/>
+                            <constraint firstAttribute="width" constant="40" id="VL6-JN-HWx"/>
+                            <constraint firstAttribute="height" constant="40" id="jWl-u2-39z"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-I8-CLQ">
-                        <rect key="frame" x="73" y="20" width="33" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="68" y="20" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hgb-Ii-0X2">
-                        <rect key="frame" x="111" y="19.5" width="20" height="21.5"/>
+                        <rect key="frame" x="103" y="18" width="20" height="21.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="ftU-6K-EOk"/>
                             <constraint firstAttribute="width" constant="20" id="nDq-ES-3sk"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EZS-lf-k0Z">
-                        <rect key="frame" x="330" y="20" width="30" height="30"/>
+                        <rect key="frame" x="335" y="20" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="76h-qK-ami"/>
-                            <constraint firstAttribute="width" constant="30" id="xeg-ya-DHA"/>
+                            <constraint firstAttribute="height" constant="25" id="76h-qK-ami"/>
+                            <constraint firstAttribute="width" constant="25" id="xeg-ya-DHA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@MetroOperativno" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F08-nQ-XoZ">
-                        <rect key="frame" x="73" y="48.5" width="99" height="13.5"/>
+                        <rect key="frame" x="68" y="46" width="99" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" systemColor="opaqueSeparatorColor"/>
                         <color key="highlightedColor" systemColor="opaqueSeparatorColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LTs-CJ-lES">
-                        <rect key="frame" x="20" y="73" width="340" height="201"/>
+                        <rect key="frame" x="20" y="68" width="340" height="206"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descr" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtv-aD-T5A">
-                                <rect key="frame" x="0.0" y="0.0" width="340" height="11"/>
+                                <rect key="frame" x="0.0" y="0.0" width="340" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-H2-TbL">
-                                <rect key="frame" x="0.0" y="21" width="340" height="150"/>
+                                <rect key="frame" x="0.0" y="25" width="340" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="pZI-Jz-jTR"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wep-08-ebm">
-                                <rect key="frame" x="0.0" y="181" width="340" height="20"/>
+                                <rect key="frame" x="0.0" y="186" width="340" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pqm-99-IAI">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="19.5"/>
